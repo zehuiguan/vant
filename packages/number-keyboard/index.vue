@@ -134,6 +134,19 @@ export default create({
             { text: this.extraKey }
           );
           break;
+        case 'shuffle':
+          keys.push({ text: 0 });
+          let m = keys.length;
+          let t, i;
+          while (m) {
+            i = Math.floor(Math.random() * m--);
+            t = keys[m];
+            keys[m] = keys[i];
+            keys[i] = t;
+          }
+          keys.splice(9, 0, { text: this.extraKey, type: ['gray'] });
+          keys.splice(11, 0, { text: this.deleteText, type: ['gray', 'delete'] });
+          break;
       }
 
       return keys;
